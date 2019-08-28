@@ -35,5 +35,11 @@
         <componentName>userassignment</componentName>
         <jiraProjectName>USERASSIGN</jiraProjectName>
         <jiraComponentId>15551</jiraComponentId>
-    </properties>
+</properties>
+     <scm>
+        <connection>scm:git:https://github.com/lutece-platform/lutece-tech-plugin-userassignment.git</connection>
+        <developerConnection>scm:git:https://github.com/lutece-platform/lutece-tech-plugin-userassignment.git</developerConnection>
+        <url>https://github.com/lutece-platform/lutece-tech-plugin-userassignment.git</url>
+      <tag>HEAD</tag>
+    </scm>
 </project>
