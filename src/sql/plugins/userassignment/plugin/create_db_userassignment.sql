@@ -4,8 +4,8 @@ CREATE TABLE userassignment_resource_user (
 	id_resource INT DEFAULT 0 NOT NULL,
 	resource_type VARCHAR(255) DEFAULT NULL,
 	id_user INT DEFAULT NULL,
-	assignment_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	is_active SMALLINT NOT NULL DEFAULT '0',
+	assignment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	is_active SMALLINT DEFAULT '0' NOT NULL ,
 	PRIMARY KEY (id)
 );
 
