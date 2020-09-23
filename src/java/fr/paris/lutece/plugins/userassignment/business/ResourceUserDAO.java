@@ -21,6 +21,7 @@ public class ResourceUserDAO implements IResourceUserDAO {
 	private static final String SQL_SELECT_RESOURCE_BY_USER = "SELECT id, id_resource, resource_type, id_user, assignment_date, is_active FROM userassignment_resource_user WHERE id_user = ? AND resource_type = ? ";
 	private static final String SQL_SELECT_USER_BY_RESOURCE = "SELECT id_user FROM userassignment_resource_user WHERE id_resource = ? AND resource_type = ? AND is_active = 1 ";
 	private static final String SQL_DEACTIVATE_BY_USER_BY_RESOURCE = "UPDATE userassignment_resource_user set is_active = 0 WHERE id_user = ? AND id_resource = ? AND resource_type = ? ";
+	private static final String SQL_DELETE_BY_RESOURCE = "DELETE FROM userassignment_resource_user WHERE id_resource = ? AND resource_type = ? ";
 
 	@Override
 	public void insert( ResourceUser resource, Plugin plugin )
@@ -117,5 +118,18 @@ public class ResourceUserDAO implements IResourceUserDAO {
             daoUtil.executeUpdate( );
 		}
 		
+	}
+	
+	@Override
+	public void deleteAssignmentByResource( int resourceID, String resourceType, Plugin plugin )
+	{
+	    try ( DAOUtil daoUtil = new DAOUtil( SQL_DELETE_BY_RESOURCE, plugin ) )
+        {
+            int nIndex = 0;
+            daoUtil.setInt( ++nIndex, resourceID );
+            daoUtil.setString( ++nIndex, resourceType );
+            daoUtil.executeUpdate( );
+        }
+	    
 	}
 }
