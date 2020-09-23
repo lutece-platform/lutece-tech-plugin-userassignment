@@ -94,4 +94,21 @@ public final class ResourceUserHome {
     {
         _dao.deactivateByUserResource( userId, resourceID, resourceType, _plugin);
     }
+    
+    /**
+     * <p>
+     * Delete the resource assignments associated to the specified resource.
+     * </p>
+     * 
+     * @param userId
+     * @param resourceID
+     *            the resource id
+     * @param resourceType
+     *            the resource type
+     */
+    public static void deleteByResource( int resourceID, String resourceType )
+    {
+        _dao.deleteAssignmentByResource( resourceID, resourceType, _plugin );
+    }
+    
 }

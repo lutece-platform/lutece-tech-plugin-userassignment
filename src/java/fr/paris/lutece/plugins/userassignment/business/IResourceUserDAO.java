@@ -47,4 +47,12 @@ public interface IResourceUserDAO {
 	 * @param plugin
 	 */
 	void deactivateByUserResource( int userId, int resourceID, String resourceType, Plugin plugin );
+	
+	/**
+	 * Deletes all assignement of a resource
+	 * @param resourceID
+	 * @param resourceType
+	 * @param plugin
+	 */
+	void deleteAssignmentByResource( int resourceID, String resourceType, Plugin plugin );
 }
