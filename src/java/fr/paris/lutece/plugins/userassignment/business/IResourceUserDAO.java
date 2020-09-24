@@ -44,8 +44,6 @@ import fr.paris.lutece.portal.service.plugin.Plugin;
 public interface IResourceUserDAO
 {
 
-    String BEAN_NAME = "userassignment.resourceUserDAO";
-
     /**
      * Insert new record in base.
      * 

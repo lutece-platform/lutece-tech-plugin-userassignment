@@ -46,7 +46,7 @@ public final class ResourceUserHome
 
     private static Plugin _plugin = PluginService.getPlugin( UserassignmentPlugin.PLUGIN_NAME );
 
-    private static IResourceUserDAO _dao = SpringContextService.getBean( IResourceUserDAO.BEAN_NAME );
+    private static IResourceUserDAO _dao = SpringContextService.getBean( ResourceUserDAO.BEAN_NAME );
 
     private ResourceUserHome( )
     {
