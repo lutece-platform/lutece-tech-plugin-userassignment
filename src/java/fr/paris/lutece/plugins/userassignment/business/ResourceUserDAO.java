@@ -49,6 +49,7 @@ import fr.paris.lutece.util.sql.DAOUtil;
 public class ResourceUserDAO implements IResourceUserDAO
 {
 
+    public static final String BEAN_NAME = "userassignment.resourceUserDAO";
     // Queries
     private static final String SQL_INSERT = "INSERT INTO userassignment_resource_user (id, id_resource, resource_type, id_user, assignment_date, is_active ) VALUES (?,?,?,?,?,?) ";
     private static final String SQL_DELETE = "DELETE FROM userassignment_resource_user WHERE id = ? ";

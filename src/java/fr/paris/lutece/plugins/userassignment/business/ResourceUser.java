@@ -65,12 +65,12 @@ public class ResourceUser
     }
 
     /**
-     * @param _id
+     * @param id
      *            the _id to set
      */
-    public void setId( int _id )
+    public void setId( int id )
     {
-        this._id = _id;
+        this._id = id;
     }
 
     /**
@@ -82,12 +82,12 @@ public class ResourceUser
     }
 
     /**
-     * @param _idResource
+     * @param idResource
      *            the _idResource to set
      */
-    public void setIdResource( int _idResource )
+    public void setIdResource( int idResource )
     {
-        this._idResource = _idResource;
+        this._idResource = idResource;
     }
 
     /**
@@ -99,12 +99,12 @@ public class ResourceUser
     }
 
     /**
-     * @param _resourceType
+     * @param resourceType
      *            the _resourceType to set
      */
-    public void setResourceType( String _resourceType )
+    public void setResourceType( String resourceType )
     {
-        this._resourceType = _resourceType;
+        this._resourceType = resourceType;
     }
 
     /**
@@ -116,12 +116,12 @@ public class ResourceUser
     }
 
     /**
-     * @param _adminUser
+     * @param adminUser
      *            the _adminUser to set
      */
-    public void setAdminUser( AdminUser _adminUser )
+    public void setAdminUser( AdminUser adminUser )
     {
-        this._adminUser = _adminUser;
+        this._adminUser = adminUser;
     }
 
     /**
@@ -129,16 +129,27 @@ public class ResourceUser
      */
     public Timestamp getDateAssignment( )
     {
-        return _dateAssignment;
+        if ( _dateAssignment == null )
+        {
+            return null;
+        }
+        return Timestamp.from( _dateAssignment.toInstant( ) );
     }
 
     /**
-     * @param _dateAssignmentDate
+     * @param dateAssignmentDate
      *            the _dateAssignmentDate to set
      */
-    public void setDateAssignment( Timestamp _dateAssignmentDate )
+    public void setDateAssignment( Timestamp dateAssignmentDate )
     {
-        this._dateAssignment = _dateAssignmentDate;
+        if ( dateAssignmentDate == null )
+        {
+            this._dateAssignment = null;
+        }
+        else
+        {
+            this._dateAssignment = Timestamp.from( dateAssignmentDate.toInstant( ) );
+        }
     }
 
     /**
@@ -150,11 +161,11 @@ public class ResourceUser
     }
 
     /**
-     * @param _bIsActive
+     * @param isActive
      *            the _bIsActive to set
      */
-    public void setActive( boolean _bIsActive )
+    public void setActive( boolean isActive )
     {
-        this._active = _bIsActive;
+        this._active = isActive;
     }
 }
