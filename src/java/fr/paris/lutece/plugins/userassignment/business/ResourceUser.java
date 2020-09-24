@@ -66,7 +66,7 @@ public class ResourceUser
 
     /**
      * @param id
-     *            the _id to set
+     *            the id to set
      */
     public void setId( int id )
     {
@@ -83,7 +83,7 @@ public class ResourceUser
 
     /**
      * @param idResource
-     *            the _idResource to set
+     *            the idResource to set
      */
     public void setIdResource( int idResource )
     {
@@ -100,7 +100,7 @@ public class ResourceUser
 
     /**
      * @param resourceType
-     *            the _resourceType to set
+     *            the resourceType to set
      */
     public void setResourceType( String resourceType )
     {
@@ -117,7 +117,7 @@ public class ResourceUser
 
     /**
      * @param adminUser
-     *            the _adminUser to set
+     *            the adminUser to set
      */
     public void setAdminUser( AdminUser adminUser )
     {
@@ -138,7 +138,7 @@ public class ResourceUser
 
     /**
      * @param dateAssignmentDate
-     *            the _dateAssignmentDate to set
+     *            the dateAssignmentDate to set
      */
     public void setDateAssignment( Timestamp dateAssignmentDate )
     {
@@ -162,7 +162,7 @@ public class ResourceUser
 
     /**
      * @param isActive
-     *            the _bIsActive to set
+     *            the isActive to set
      */
     public void setActive( boolean isActive )
     {
