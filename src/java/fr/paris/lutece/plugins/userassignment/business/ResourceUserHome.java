@@ -95,6 +95,23 @@ public final class ResourceUserHome
     {
         return _dao.selectUserListByResource( nIdUnit, strResourceType, _plugin );
     }
+    
+    /**
+     * <p>
+     * Finds the users associated to the specified resource type.
+     * </p>
+     * <p>
+     * The result list contains active resource assignments.
+     * </p>
+     * 
+     * @param strResourceType
+     *            the resource type
+     * @return the list of unit assignments
+     */
+    public static List<AdminUser> findUserByResourceType( String strResourceType )
+    {
+        return _dao.selectUserListByResourceType( strResourceType, _plugin );
+    }
 
     /**
      * <p>

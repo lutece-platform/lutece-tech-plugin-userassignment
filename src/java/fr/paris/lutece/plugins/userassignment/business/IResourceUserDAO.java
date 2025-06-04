@@ -73,6 +73,14 @@ public interface IResourceUserDAO
      * @return
      */
     List<AdminUser> selectUserListByResource( int resourceID, String resourceType, Plugin plugin );
+    
+    /**
+     * Select all Users By resource type.
+     * 
+     * @param resourceType
+     * @return
+     */
+	List<AdminUser> selectUserListByResourceType(String resourceType, Plugin plugin);
 
     /**
      * Deactivate by User and resource
