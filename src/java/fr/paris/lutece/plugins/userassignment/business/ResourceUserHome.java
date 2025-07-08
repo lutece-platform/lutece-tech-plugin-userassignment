@@ -39,14 +39,14 @@ import fr.paris.lutece.plugins.userassignment.service.UserassignmentPlugin;
 import fr.paris.lutece.portal.business.user.AdminUser;
 import fr.paris.lutece.portal.service.plugin.Plugin;
 import fr.paris.lutece.portal.service.plugin.PluginService;
-import fr.paris.lutece.portal.service.spring.SpringContextService;
+import jakarta.enterprise.inject.spi.CDI;
 
 public final class ResourceUserHome
 {
 
     private static Plugin _plugin = PluginService.getPlugin( UserassignmentPlugin.PLUGIN_NAME );
 
-    private static IResourceUserDAO _dao = SpringContextService.getBean( ResourceUserDAO.BEAN_NAME );
+    private static IResourceUserDAO _dao = CDI.current( ).select( IResourceUserDAO.class ).get( );
 
     private ResourceUserHome( )
     {

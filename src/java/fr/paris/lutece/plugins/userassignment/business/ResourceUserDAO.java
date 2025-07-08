@@ -41,17 +41,16 @@ import fr.paris.lutece.portal.business.user.AdminUser;
 import fr.paris.lutece.portal.business.user.AdminUserHome;
 import fr.paris.lutece.portal.service.plugin.Plugin;
 import fr.paris.lutece.util.sql.DAOUtil;
+import jakarta.enterprise.context.ApplicationScoped;
 
 /**
  * This class provides Data Access methods for {@link ResourceUser} objects
  */
-
+@ApplicationScoped
 public class ResourceUserDAO implements IResourceUserDAO
 {
-
-    public static final String BEAN_NAME = "userassignment.resourceUserDAO";
     // Queries
-    private static final String SQL_INSERT = "INSERT INTO userassignment_resource_user (id, id_resource, resource_type, id_user, assignment_date, is_active ) VALUES (?,?,?,?,?,?) ";
+    private static final String SQL_INSERT = "INSERT INTO userassignment_resource_user (id_resource, resource_type, id_user, assignment_date, is_active ) VALUES (?,?,?,?,?) ";
     private static final String SQL_DELETE = "DELETE FROM userassignment_resource_user WHERE id = ? ";
     private static final String SQL_SELECT_RESOURCE_BY_USER = "SELECT id, id_resource, resource_type, id_user, assignment_date, is_active FROM userassignment_resource_user WHERE id_user = ? AND resource_type = ? ";
     private static final String SQL_SELECT_USER_BY_RESOURCE = "SELECT id_user FROM userassignment_resource_user WHERE id_resource = ? AND resource_type = ? AND is_active = 1 ";
@@ -65,7 +64,6 @@ public class ResourceUserDAO implements IResourceUserDAO
         try ( DAOUtil daoUtil = new DAOUtil( SQL_INSERT, Statement.RETURN_GENERATED_KEYS, plugin ) )
         {
             int nIndex = 0;
-            daoUtil.setInt( ++nIndex, resource.getId( ) );
             daoUtil.setInt( ++nIndex, resource.getIdResource( ) );
             daoUtil.setString( ++nIndex, resource.getResourceType( ) );
             daoUtil.setInt( ++nIndex, resource.getAdminUser( ).getUserId( ) );
