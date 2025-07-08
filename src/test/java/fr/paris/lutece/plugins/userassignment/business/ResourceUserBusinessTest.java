@@ -37,18 +37,20 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import fr.paris.lutece.portal.business.user.AdminUser;
+import org.junit.jupiter.api.Test;
+
 import fr.paris.lutece.test.LuteceTestCase;
 
 public class ResourceUserBusinessTest extends LuteceTestCase
 {
+	@Test
     public void testCRUD( )
     {
         ResourceUser resourceUser = new ResourceUser( );
         resourceUser.setIdResource( 11 );
         resourceUser.setResourceType( "toto" );
         resourceUser.getAdminUser( ).setUserId( 1 );
-        resourceUser.setDateAssignment( Timestamp.valueOf( LocalDateTime.now( ) ) );
+        resourceUser.setDateAssignment( Timestamp.valueOf( LocalDateTime.now( ).withNano( 0 ) ) );
         resourceUser.setActive( true );
 
         ResourceUserHome.create( resourceUser );
