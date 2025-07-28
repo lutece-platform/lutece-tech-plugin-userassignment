@@ -1,3 +1,6 @@
+--liquibase formatted sql
+--changeset userassignment:create_db_userassignment.sql
+--preconditions onFail:MARK_RAN onError:WARN
 DROP TABLE IF EXISTS userassignment_resource_user;
 CREATE TABLE userassignment_resource_user (
 	id int AUTO_INCREMENT,
