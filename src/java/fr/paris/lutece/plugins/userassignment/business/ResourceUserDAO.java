@@ -58,6 +58,7 @@ public class ResourceUserDAO implements IResourceUserDAO
     private static final String SQL_SELECT_USER_BY_RESOURCE_TYPE = "SELECT DISTINCT id_user FROM userassignment_resource_user WHERE resource_type = ? AND is_active = 1 ";
     private static final String SQL_DEACTIVATE_BY_USER_BY_RESOURCE = "UPDATE userassignment_resource_user set is_active = 0 WHERE id_user = ? AND id_resource = ? AND resource_type = ? ";
     private static final String SQL_DELETE_BY_RESOURCE = "DELETE FROM userassignment_resource_user WHERE id_resource = ? AND resource_type = ? ";
+    private static final String SQL_SELECT_COUNT_USER_ASSIGNMENT = "SELECT COUNT(1) FROM userassignment_resource_user WHERE is_active = 1 AND id_user = ? ";
 
     @Override
     public void insert( ResourceUser resource, Plugin plugin )
@@ -187,4 +188,26 @@ public class ResourceUserDAO implements IResourceUserDAO
         }
 
     }
+
+    @Override
+    public int getCountAssignmentUser( int userId, Plugin plugin )
+    {
+
+        int nCount = 0;
+
+        try ( DAOUtil daoUtil = new DAOUtil( SQL_SELECT_COUNT_USER_ASSIGNMENT, plugin ) )
+        {
+            int nIndex = 0;
+            daoUtil.setInt( ++nIndex, userId );
+            daoUtil.executeQuery( );
+
+            if ( daoUtil.next( ) )
+            {
+                nCount = daoUtil.getInt( 1 );
+            }
+
+        }
+        return nCount;
+    }
+
 }

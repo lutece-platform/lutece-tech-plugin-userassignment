@@ -100,4 +100,14 @@ public interface IResourceUserDAO
      * @param plugin
      */
     void deleteAssignmentByResource( int resourceID, String resourceType, Plugin plugin );
+
+    /**
+     * Count all assignement of a user
+     *
+     * @param userId
+     * @param plugin
+     * @return nb user assignment
+     */
+    int getCountAssignmentUser( int userId, Plugin plugin );
+
 }

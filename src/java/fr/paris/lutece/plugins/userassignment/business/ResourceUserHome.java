@@ -162,4 +162,15 @@ public final class ResourceUserHome
         _dao.deleteAssignmentByResource( resourceID, resourceType, _plugin );
     }
 
+    /**
+     * Count all assignement of a user
+     *
+     * @param userId
+     * @return nb user assignment
+     */
+    public static int getCountAssignmentUser( int userId )
+    {
+        return _dao.getCountAssignmentUser( userId, _plugin );
+    }
+
 }
