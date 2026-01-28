@@ -132,6 +132,23 @@ public final class ResourceUserHome
 
     /**
      * <p>
+     * Finds the active resource assignments associated to the specified user.
+     * </p>
+     * <p>
+     * The result list contains active resource assignments.
+     * </p>
+     *
+     * @param nIdUser
+     *            the user id
+     * @return the list of respurce assignments
+     */
+    public static List<ResourceUser> findByUser( int nIdUser )
+    {
+        return _dao.selectActiveResourcesByUser( nIdUser, _plugin );
+    }
+
+    /**
+     * <p>
      * Deactivate the resource assignments associated to the specified resource.
      * </p>
      * 

@@ -33,14 +33,22 @@
  */
 package fr.paris.lutece.plugins.userassignment.service;
 
+import fr.paris.lutece.plugins.userassignment.business.UserAssignmentRemovalListener;
 import fr.paris.lutece.portal.service.plugin.PluginDefaultImplementation;
+import fr.paris.lutece.portal.service.util.BeanUtils;
+import fr.paris.lutece.portal.service.util.RemovalListenerService;
+import jakarta.enterprise.inject.literal.NamedLiteral;
+import jakarta.enterprise.inject.spi.CDI;
 
-/**
- *
- * UnitTreePlugin
- *
- */
+
 public class UserassignmentPlugin extends PluginDefaultImplementation
 {
     public static final String PLUGIN_NAME = "userassignment";
+
+    @Override
+    public void init( )
+    {
+        CDI.current( ).select( RemovalListenerService.class, NamedLiteral.of( BeanUtils.BEAN_USER_REMOVAL_SERVICE) )
+                .get( ).registerListener( new UserAssignmentRemovalListener( ) );
+    }
 }

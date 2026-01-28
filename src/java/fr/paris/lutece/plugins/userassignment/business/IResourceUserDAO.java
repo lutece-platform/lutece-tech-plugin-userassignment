@@ -67,6 +67,14 @@ public interface IResourceUserDAO
     List<ResourceUser> selectResourcesByUser( int userId, String resourceType, Plugin plugin );
 
     /**
+     * Select all ResourceUser By User.
+     *
+     * @param userId
+     * @return
+     */
+    List<ResourceUser> selectActiveResourcesByUser( int userId, Plugin plugin );
+
+    /**
      * Select all Users By resource.
      * 
      * @param userId
