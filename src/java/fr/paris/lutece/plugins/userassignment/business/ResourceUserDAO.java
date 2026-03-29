@@ -53,6 +53,7 @@ public class ResourceUserDAO implements IResourceUserDAO
     private static final String SQL_INSERT = "INSERT INTO userassignment_resource_user (id_resource, resource_type, id_user, assignment_date, is_active ) VALUES (?,?,?,?,?) ";
     private static final String SQL_DELETE = "DELETE FROM userassignment_resource_user WHERE id = ? ";
     private static final String SQL_SELECT_RESOURCE_BY_USER = "SELECT id, id_resource, resource_type, id_user, assignment_date, is_active FROM userassignment_resource_user WHERE id_user = ? AND resource_type = ? ";
+    private static final String SQL_SELECT_ACTIVE_RESOURCE_BY_USER = "SELECT id, id_resource, resource_type, id_user, assignment_date, is_active FROM userassignment_resource_user WHERE id_user = ? AND is_active = 1 ";
     private static final String SQL_SELECT_USER_BY_RESOURCE = "SELECT id_user FROM userassignment_resource_user WHERE id_resource = ? AND resource_type = ? AND is_active = 1 ";
     private static final String SQL_SELECT_USER_BY_RESOURCE_TYPE = "SELECT DISTINCT id_user FROM userassignment_resource_user WHERE resource_type = ? AND is_active = 1 ";
     private static final String SQL_DEACTIVATE_BY_USER_BY_RESOURCE = "UPDATE userassignment_resource_user set is_active = 0 WHERE id_user = ? AND id_resource = ? AND resource_type = ? ";
@@ -100,6 +101,33 @@ public class ResourceUserDAO implements IResourceUserDAO
             int nIndex = 0;
             daoUtil.setInt( ++nIndex, userId );
             daoUtil.setString( ++nIndex, resourceType );
+
+            daoUtil.executeQuery( );
+
+            while ( daoUtil.next( ) )
+            {
+                int i = 0;
+                ResourceUser resource = new ResourceUser( );
+                resource.setId( daoUtil.getInt( ++i ) );
+                resource.setIdResource( daoUtil.getInt( ++i ) );
+                resource.setResourceType( daoUtil.getString( ++i ) );
+                resource.setAdminUser( AdminUserHome.findByPrimaryKey( daoUtil.getInt( ++i ) ) );
+                resource.setDateAssignment( daoUtil.getTimestamp( ++i ) );
+                resource.setActive( daoUtil.getBoolean( ++i ) );
+                result.add( resource );
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public List<ResourceUser> selectActiveResourcesByUser( int userId, Plugin plugin )
+    {
+        List<ResourceUser> result = new ArrayList<>( );
+        try ( DAOUtil daoUtil = new DAOUtil( SQL_SELECT_ACTIVE_RESOURCE_BY_USER, Statement.RETURN_GENERATED_KEYS, plugin ) )
+        {
+            int nIndex = 0;
+            daoUtil.setInt( ++nIndex, userId );
 
             daoUtil.executeQuery( );
 
